@@ -82,3 +82,8 @@ The prototype evaluates:
 This project demonstrates how AI and automation can reduce manual effort in architecture review by transforming unstructured proposals into consistent, documented compliance assessments.
 
 It is a student-built proof of concept and does not represent a production enterprise governance system.
+
+
+Video Evidence:
+
+[ArchiGuard_AI_Demo_Final.zip](https://github.com/user-attachments/files/31927187/ArchiGuard_AI_Demo_Final.zip)
