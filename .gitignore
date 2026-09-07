@@ -1,0 +1,19 @@
+# Environment variables and secrets
+.env
+.env.*
+
+# Python virtual environment
+.venv/
+venv/
+env/
+
+# PyCharm / IntelliJ
+.idea/
+
+# Python cache
+__pycache__/
+*.py[cod]
+
+# Generated runtime state
+alerts/alert_log.json
+alerts/file_state.json

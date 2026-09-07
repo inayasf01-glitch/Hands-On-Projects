@@ -1,0 +1,9 @@
+Architecture Change Request
+System: Customer Data Platform
+Version: 2.0
+Change Type: Database Integration
+Description: The platform will integrate with a new customer analytics service.
+Owner: Enterprise Architecture Team
+Business Impact: Medium
+Environment: Production
+Review Required: Yes

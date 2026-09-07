@@ -1,0 +1,7 @@
+Architecture Change Request
+System: Legacy Reporting Platform
+Version: 1.0
+Change Type: Database Migration
+Description: The reporting platform will be migrated to a new database environment.
+Environment: Production
+Review Required: Yes

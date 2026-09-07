@@ -1,0 +1,9 @@
+Architecture Change Request
+System: Internal API Gateway
+Version: 3.1
+Change Type: API Configuration
+Description: The API gateway routing configuration has been updated.
+Owner: Platform Engineering Team
+Business Impact: High
+Environment: Production
+Review Required: Yes

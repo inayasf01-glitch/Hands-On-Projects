@@ -1,0 +1,1167 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
+
+<title>
+    Enterprise Architecture Enablement Dashboard
+</title>
+
+<style>
+
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        background: #f4f6f8;
+        color: #1f2937;
+    }
+
+    header {
+        background: #111827;
+        color: white;
+        padding: 28px 40px;
+    }
+
+    header h1 {
+        margin: 0 0 8px;
+        font-size: 28px;
+    }
+
+    header p {
+        margin: 0;
+        color: #d1d5db;
+    }
+
+    main {
+        padding: 30px 40px;
+        max-width: 1500px;
+        margin: auto;
+    }
+
+    .section-title {
+        margin-top: 32px;
+        margin-bottom: 15px;
+        font-size: 20px;
+    }
+
+    .cards {
+        display: grid;
+        grid-template-columns:
+            repeat(auto-fit, minmax(190px, 1fr));
+        gap: 16px;
+    }
+
+    .card {
+        background: white;
+        padding: 22px;
+        border-radius: 10px;
+        box-shadow:
+            0 2px 8px rgba(0,0,0,0.08);
+    }
+
+    .card .label {
+        font-size: 13px;
+        color: #6b7280;
+        margin-bottom: 8px;
+    }
+
+    .card .value {
+        font-size: 30px;
+        font-weight: bold;
+    }
+
+    .table-container {
+        background: white;
+        border-radius: 10px;
+        overflow-x: auto;
+        box-shadow:
+            0 2px 8px rgba(0,0,0,0.08);
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        min-width: 1250px;
+    }
+
+    th,
+    td {
+        padding: 14px;
+        text-align: left;
+        border-bottom:
+            1px solid #e5e7eb;
+        font-size: 13px;
+    }
+
+    th {
+        background: #f9fafb;
+        font-weight: bold;
+    }
+
+    .badge {
+        display: inline-block;
+        padding: 5px 9px;
+        border-radius: 999px;
+        background: #e5e7eb;
+        font-size: 12px;
+        font-weight: bold;
+    }
+
+    .review-card {
+        background: white;
+        border-radius: 10px;
+        padding: 24px;
+        margin-bottom: 20px;
+        box-shadow:
+            0 2px 8px rgba(0,0,0,0.08);
+    }
+
+    .review-card-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 20px;
+        margin-bottom: 20px;
+    }
+
+    .review-card-header h3 {
+        margin: 0 0 6px;
+        font-size: 18px;
+    }
+
+    .review-card-header p {
+        margin: 0;
+        color: #6b7280;
+        font-size: 13px;
+    }
+
+    .review-badges {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+    }
+
+    .ai-review {
+        border-left: 4px solid #374151;
+        background: #f9fafb;
+        border-radius: 6px;
+        overflow: hidden;
+    }
+
+    .ai-review-header {
+        padding: 14px 18px;
+        border-bottom:
+            1px solid #e5e7eb;
+        display: flex;
+        justify-content: space-between;
+        gap: 15px;
+        align-items: center;
+    }
+
+    .advisory-label {
+        font-size: 11px;
+        font-weight: bold;
+        color: #6b7280;
+        text-transform: uppercase;
+        letter-spacing: 0.4px;
+    }
+
+    .ai-review-content {
+        padding: 18px;
+        overflow-x: auto;
+    }
+
+    .ai-review-content p {
+        margin: 0 0 10px 0;
+        line-height: 1.6;
+    }
+
+    .ai-review-content h4 {
+        margin: 22px 0 10px 0;
+        font-size: 14px;
+        font-weight: bold;
+        text-transform: uppercase;
+        letter-spacing: 0.3px;
+        color: #374151;
+    }
+
+    .ai-review-content h4:first-child {
+        margin-top: 0;
+    }
+
+    .ai-review-content hr {
+        border: 0;
+        border-top:
+            1px solid #e5e7eb;
+        margin: 18px 0;
+    }
+
+    .review-bullet {
+        display: flex;
+        gap: 8px;
+        margin: 7px 0;
+        line-height: 1.55;
+    }
+
+    .bullet-symbol {
+        font-weight: bold;
+        flex-shrink: 0;
+    }
+
+    .review-number {
+        display: flex;
+        gap: 8px;
+        margin: 7px 0;
+        line-height: 1.55;
+    }
+
+    .review-number-value {
+        font-weight: bold;
+        min-width: 22px;
+        flex-shrink: 0;
+    }
+
+    .review-space {
+        height: 8px;
+    }
+
+    .ai-review-empty {
+        background: white;
+        padding: 20px;
+        border-radius: 8px;
+        color: #6b7280;
+    }
+
+    .human-review {
+        margin-top: 18px;
+        padding: 14px 18px;
+        background: #f3f4f6;
+        border-radius: 6px;
+        font-size: 13px;
+    }
+
+    .architecture-note {
+        background: white;
+        padding: 20px;
+        border-left:
+            4px solid #374151;
+        border-radius: 6px;
+        margin-top: 25px;
+        line-height: 1.6;
+    }
+
+    .footer {
+        margin-top: 35px;
+        color: #6b7280;
+        font-size: 12px;
+    }
+
+    @media (max-width: 700px) {
+
+        header {
+            padding: 24px;
+        }
+
+        main {
+            padding: 24px;
+        }
+
+        .review-card-header {
+            flex-direction: column;
+        }
+
+        .review-badges {
+            justify-content: flex-start;
+        }
+
+        .ai-review-header {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+    }
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+    <h1>
+        Enterprise Architecture Enablement Dashboard
+    </h1>
+
+    <p>
+        Automated architecture artifact monitoring,
+        validation, prioritization, and review tracking
+    </p>
+
+</header>
+
+<main>
+
+<h2 class="section-title">
+    Portfolio Overview
+</h2>
+
+<div class="cards">
+
+    <div class="card">
+        <div class="label">
+            Total Changes
+        </div>
+        <div class="value">
+            3
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="label">
+            Systems Affected
+        </div>
+        <div class="value">
+            3
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="label">
+            New Artifacts
+        </div>
+        <div class="value">
+            3
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="label">
+            Modified Artifacts
+        </div>
+        <div class="value">
+            0
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="label">
+            Validation Passed
+        </div>
+        <div class="value">
+            2
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="label">
+            Validation Failed
+        </div>
+        <div class="value">
+            1
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="label">
+            High Priority
+        </div>
+        <div class="value">
+            1
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="label">
+            High Governance Risk
+        </div>
+        <div class="value">
+            1
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="label">
+            Review Queue
+        </div>
+        <div class="value">
+            3
+        </div>
+    </div>
+
+</div>
+
+<h2 class="section-title">
+    Architecture Review Queue
+</h2>
+
+<div class="table-container">
+
+<table>
+
+<thead>
+
+<tr>
+
+    <th>System</th>
+    <th>Artifact</th>
+    <th>Version</th>
+    <th>Change Type</th>
+    <th>Business Impact</th>
+    <th>Validation</th>
+    <th>Priority</th>
+    <th>Governance Risk</th>
+    <th>Validation Issues</th>
+    <th>Detected</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+
+        <tr>
+
+            <td>
+                Legacy Reporting Platform
+            </td>
+
+            <td>
+                legacy_reporting_v1.txt
+            </td>
+
+            <td>
+                1.0
+            </td>
+
+            <td>
+                Database Migration
+            </td>
+
+            <td>
+                Unknown
+            </td>
+
+            <td>
+                <span class="badge">FAIL</span>
+            </td>
+
+            <td>
+                <span class="badge">Low</span>
+            </td>
+
+            <td>
+                <span class="badge">High</span>
+            </td>
+
+            <td>
+                Owner, Business Impact
+            </td>
+
+            <td>
+                2026-09-07T11:48:02
+            </td>
+
+        </tr>
+        
+        <tr>
+
+            <td>
+                Customer Data Platform
+            </td>
+
+            <td>
+                customer_platform_v2.txt
+            </td>
+
+            <td>
+                2.0
+            </td>
+
+            <td>
+                Database Integration
+            </td>
+
+            <td>
+                Medium
+            </td>
+
+            <td>
+                <span class="badge">PASS</span>
+            </td>
+
+            <td>
+                <span class="badge">Medium</span>
+            </td>
+
+            <td>
+                <span class="badge">Low</span>
+            </td>
+
+            <td>
+                None
+            </td>
+
+            <td>
+                2026-09-07T11:47:14
+            </td>
+
+        </tr>
+        
+        <tr>
+
+            <td>
+                Internal API Gateway
+            </td>
+
+            <td>
+                api_gateway_v3.txt
+            </td>
+
+            <td>
+                3.1
+            </td>
+
+            <td>
+                API Configuration
+            </td>
+
+            <td>
+                High
+            </td>
+
+            <td>
+                <span class="badge">PASS</span>
+            </td>
+
+            <td>
+                <span class="badge">High</span>
+            </td>
+
+            <td>
+                <span class="badge">Low</span>
+            </td>
+
+            <td>
+                None
+            </td>
+
+            <td>
+                2026-09-07T11:45:27
+            </td>
+
+        </tr>
+        
+
+</tbody>
+
+</table>
+
+</div>
+
+<h2 class="section-title">
+    AI-Assisted Architecture Reviews
+</h2>
+
+<p>
+    AI-generated analysis is advisory and supports,
+    but does not replace, human architecture review
+    and governance decisions.
+</p>
+
+
+        <div class="review-card">
+
+            <div class="review-card-header">
+
+                <div>
+
+                    <h3>
+                        Legacy Reporting Platform
+                    </h3>
+
+                    <p>
+                        legacy_reporting_v1.txt
+
+                        · Version
+
+                        1.0
+                    </p>
+
+                </div>
+
+                <div class="review-badges">
+
+                    <span class="badge">Low</span>
+
+                    <span class="badge">High</span>
+
+                    <span class="badge">FAIL</span>
+
+                </div>
+
+            </div>
+
+            
+    <div class="ai-review">
+
+        <div class="ai-review-header">
+
+            <strong>
+                AI-Assisted Architecture Review
+            </strong>
+
+            <span class="advisory-label">
+                Advisory — Human Review Required
+            </span>
+
+        </div>
+
+        <div class="ai-review-content">
+            <p>ARCHITECTURE SUMMARY</p>
+<p>The proposal requests a database migration for the production instance of the &quot;Legacy Reporting Platform&quot; (Version 1.0) to a new database environment.</p>
+<div class='review-space'></div>
+<p>POTENTIAL RISKS</p>
+
+                <div class="review-bullet">
+                    <span class="bullet-symbol">•</span>
+                    <span>Technical &amp; Data Integrity Risk: Due to the complete absence of details regarding source/target database engines, schema changes, and data validation mechanisms, there is a risk of data corruption, data loss, or schema/query incompatibility.</span>
+                </div>
+                
+
+                <div class="review-bullet">
+                    <span class="bullet-symbol">•</span>
+                    <span>Operational &amp; Downtime Risk: The proposal does not state an execution strategy, cutover window, or rollback plan, introducing severe operational risk of extended service outages for reporting.</span>
+                </div>
+                
+
+                <div class="review-bullet">
+                    <span class="bullet-symbol">•</span>
+                    <span>Integration &amp; Dependency Risk: There is no information regarding upstream data sources (e.g., ETL pipelines) or downstream report consumers, creating a risk of broken connections and interface failures.</span>
+                </div>
+                
+
+                <div class="review-bullet">
+                    <span class="bullet-symbol">•</span>
+                    <span>Security &amp; Governance Risk: The proposal lacks information regarding access management, encryption, network isolation, and compliance standards for the new environment.</span>
+                </div>
+                
+
+                <div class="review-bullet">
+                    <span class="bullet-symbol">•</span>
+                    <span>Scalability &amp; Performance Risk: Insufficient information is provided regarding the sizing, capacity, and performance baselines of the new database environment to assess whether it can handle existing or future workloads.</span>
+                </div>
+                
+<div class='review-space'></div>
+<p>REVIEW QUESTIONS</p>
+
+                <div class="review-number">
+                    <span class="review-number-value">
+                        1.
+                    </span>
+                    <span>
+                        What are the specific technologies, versions, and configurations of the source and target database environments?
+                    </span>
+                </div>
+                
+
+                <div class="review-number">
+                    <span class="review-number-value">
+                        2.
+                    </span>
+                    <span>
+                        What is the cutover and execution strategy (e.g., big-bang vs. phased, offline vs. live replication), and what is the expected downtime?
+                    </span>
+                </div>
+                
+
+                <div class="review-number">
+                    <span class="review-number-value">
+                        3.
+                    </span>
+                    <span>
+                        What is the documented rollback and disaster recovery plan if the migration fails in production?
+                    </span>
+                </div>
+                
+
+                <div class="review-number">
+                    <span class="review-number-value">
+                        4.
+                    </span>
+                    <span>
+                        How will data consistency, schema compatibility, and reporting performance be validated prior to and following the migration?
+                    </span>
+                </div>
+                
+
+                <div class="review-number">
+                    <span class="review-number-value">
+                        5.
+                    </span>
+                    <span>
+                        What are the security, identity/access management (IAM), and compliance configurations of the new database environment?
+                    </span>
+                </div>
+                
+
+                <div class="review-number">
+                    <span class="review-number-value">
+                        6.
+                    </span>
+                    <span>
+                        Which upstream and downstream systems, ETL jobs, and user interfaces depend on this database, and how will their connection configurations be updated?
+                    </span>
+                </div>
+                
+<div class='review-space'></div>
+<p>SUGGESTED REVIEW FOCUS</p>
+
+                <div class="review-bullet">
+                    <span class="bullet-symbol">•</span>
+                    <span>Specification Completeness: Requiring the submission of detailed architectural, infrastructure, and execution specifications, as the current proposal lacks critical technical details.</span>
+                </div>
+                
+
+                <div class="review-bullet">
+                    <span class="bullet-symbol">•</span>
+                    <span>Cutover and Rollback Strategy: Ensuring robust, tested procedures exist for data validation, downtime mitigation, and rapid fallback in case of failure.</span>
+                </div>
+                
+
+                <div class="review-bullet">
+                    <span class="bullet-symbol">•</span>
+                    <span>Compatibility and Performance Assurance: Verifying that legacy reporting queries and downstream integrations remain functional and performant on the new target architecture.</span>
+                </div>
+                
+
+                <div class="review-bullet">
+                    <span class="bullet-symbol">•</span>
+                    <span>Security and Compliance Alignment: Confirming that the new database environment meets enterprise security baselines and regulatory requirements.</span>
+                </div>
+                
+        </div>
+
+    </div>
+    
+
+            <div class="human-review">
+
+                <strong>
+                    Human Architecture Review:
+                </strong>
+
+                Pending Architecture Review
+
+            </div>
+
+        </div>
+        
+        <div class="review-card">
+
+            <div class="review-card-header">
+
+                <div>
+
+                    <h3>
+                        Customer Data Platform
+                    </h3>
+
+                    <p>
+                        customer_platform_v2.txt
+
+                        · Version
+
+                        2.0
+                    </p>
+
+                </div>
+
+                <div class="review-badges">
+
+                    <span class="badge">Medium</span>
+
+                    <span class="badge">Low</span>
+
+                    <span class="badge">PASS</span>
+
+                </div>
+
+            </div>
+
+            
+    <div class="ai-review">
+
+        <div class="ai-review-header">
+
+            <strong>
+                AI-Assisted Architecture Review
+            </strong>
+
+            <span class="advisory-label">
+                Advisory — Human Review Required
+            </span>
+
+        </div>
+
+        <div class="ai-review-content">
+            <h4>ARCHITECTURE SUMMARY</h4>
+<p>The proposed change involves integrating the production Customer Data Platform (v2.0) with a new, unspecified customer analytics service via a &quot;Database Integration.&quot; The initiative is owned by the Enterprise Architecture Team and classified as having a medium business impact.</p>
+<div class='review-space'></div>
+<hr>
+<div class='review-space'></div>
+<h4>POTENTIAL RISKS</h4>
+
+                <div class="review-bullet">
+                    <span class="bullet-symbol">•</span>
+                    <span><strong>Technical &amp; Integration Risks:</strong> The proposal specifies a database-level integration but provides no technical design. Direct database integration creates risks of tight schema coupling, bypassing application logic, and cross-system dependency. There is insufficient architectural detail to evaluate the integration pattern.</span>
+                </div>
+                
+
+                <div class="review-bullet">
+                    <span class="bullet-symbol">•</span>
+                    <span><strong>Security &amp; Governance Risks:</strong> Because the system is a Customer Data Platform, sharing data with a new analytics service introduces significant data privacy, exposure, and regulatory compliance risks. The proposal provides no information regarding data classification, access controls, encryption, or whether the service is internal or a third-party SaaS provider.</span>
+                </div>
+                
+
+                <div class="review-bullet">
+                    <span class="bullet-symbol">•</span>
+                    <span><strong>Operational &amp; Scalability Risks:</strong> Analytical workloads can be resource-intensive. If the integration involves direct queries against production databases, it introduces risks of resource contention, latency spikes, or outages. The proposal lacks performance profiles, throughput requirements, or workload isolation plans.</span>
+                </div>
+                
+
+                <div class="review-bullet">
+                    <span class="bullet-symbol">•</span>
+                    <span><strong>General Assessment:</strong> The proposal contains insufficient detail to fully evaluate technical feasibility, resiliency, or operational risks.</span>
+                </div>
+                
+<div class='review-space'></div>
+<hr>
+<div class='review-space'></div>
+<h4>REVIEW QUESTIONS</h4>
+
+                <div class="review-number">
+                    <span class="review-number-value">
+                        1.
+                    </span>
+                    <span>
+                        <strong>Integration Pattern:</strong> What specific mechanism will be used for the database integration (e.g., direct connection to transactional DB, read replicas, ETL/ELT pipelines, event streaming, or API-based access)?
+                    </span>
+                </div>
+                
+
+                <div class="review-number">
+                    <span class="review-number-value">
+                        2.
+                    </span>
+                    <span>
+                        <strong>Data Governance &amp; Security:</strong> What specific customer datasets will be accessed, what data masking/anonymization will be applied, and does the destination service meet organizational security and privacy compliance standards?
+                    </span>
+                </div>
+                
+
+                <div class="review-number">
+                    <span class="review-number-value">
+                        3.
+                    </span>
+                    <span>
+                        <strong>System Performance:</strong> What are the expected query volumes, data transfer rates, and potential impacts on production database resources and latency?
+                    </span>
+                </div>
+                
+
+                <div class="review-number">
+                    <span class="review-number-value">
+                        4.
+                    </span>
+                    <span>
+                        <strong>Hosting &amp; Vendor Model:</strong> Is the new customer analytics service hosted on-premise, within the enterprise cloud perimeter, or by an external third-party vendor?
+                    </span>
+                </div>
+                
+
+                <div class="review-number">
+                    <span class="review-number-value">
+                        5.
+                    </span>
+                    <span>
+                        <strong>Operational Resiliency:</strong> What monitoring, alerting, access auditing, and rollback/contingency plans exist if the analytics service fails or degrades database performance?
+                    </span>
+                </div>
+                
+<div class='review-space'></div>
+<hr>
+<div class='review-space'></div>
+<h4>SUGGESTED REVIEW FOCUS</h4>
+
+                <div class="review-number">
+                    <span class="review-number-value">
+                        1.
+                    </span>
+                    <span>
+                        <strong>Integration Architecture &amp; Decoupling:</strong> Validate whether a direct database integration is appropriate versus decoupled alternatives (e.g., event streaming, APIs, or an asynchronous data warehouse/lakehouse feed).
+                    </span>
+                </div>
+                
+
+                <div class="review-number">
+                    <span class="review-number-value">
+                        2.
+                    </span>
+                    <span>
+                        <strong>Data Protection &amp; Compliance:</strong> Ensure all customer data shared with the analytics service complies with relevant privacy regulations and security policies.
+                    </span>
+                </div>
+                
+
+                <div class="review-number">
+                    <span class="review-number-value">
+                        3.
+                    </span>
+                    <span>
+                        <strong>Production Workload Isolation:</strong> Confirm that analytical queries cannot compromise the availability, responsiveness, or integrity of the core Customer Data Platform.
+                    </span>
+                </div>
+                
+        </div>
+
+    </div>
+    
+
+            <div class="human-review">
+
+                <strong>
+                    Human Architecture Review:
+                </strong>
+
+                Pending Architecture Review
+
+            </div>
+
+        </div>
+        
+        <div class="review-card">
+
+            <div class="review-card-header">
+
+                <div>
+
+                    <h3>
+                        Internal API Gateway
+                    </h3>
+
+                    <p>
+                        api_gateway_v3.txt
+
+                        · Version
+
+                        3.1
+                    </p>
+
+                </div>
+
+                <div class="review-badges">
+
+                    <span class="badge">High</span>
+
+                    <span class="badge">Low</span>
+
+                    <span class="badge">PASS</span>
+
+                </div>
+
+            </div>
+
+            
+    <div class="ai-review">
+
+        <div class="ai-review-header">
+
+            <strong>
+                AI-Assisted Architecture Review
+            </strong>
+
+            <span class="advisory-label">
+                Advisory — Human Review Required
+            </span>
+
+        </div>
+
+        <div class="ai-review-content">
+            <p>ARCHITECTURE SUMMARY</p>
+<p>The Platform Engineering Team is proposing an update to the routing configuration for the Internal API Gateway (Version 3.1). The change is scheduled for the Production environment and has been classified with a High Business Impact.</p>
+<div class='review-space'></div>
+<p>POTENTIAL RISKS</p>
+
+                <div class="review-bullet">
+                    <span class="bullet-symbol">•</span>
+                    <span><strong>Lack of Proposal Detail:</strong> The proposal does not contain specific information regarding the exact routing rules, target endpoints, traffic volumes, or security policies being modified. A comprehensive risk assessment is not possible without these details.</span>
+                </div>
+                
+
+                <div class="review-bullet">
+                    <span class="bullet-symbol">•</span>
+                    <span><strong>Operational/Availability Risk:</strong> Because this is a production change with high business impact, incorrect routing rules could lead to misdirected traffic, broken backend dependencies, gateway timeouts, or full service outages.</span>
+                </div>
+                
+
+                <div class="review-bullet">
+                    <span class="bullet-symbol">•</span>
+                    <span><strong>Security &amp; Access Control Risk:</strong> Routing updates can inadvertently expose private or unauthorized endpoints, bypass authentication/authorization layers, or disrupt audit logging if not configured properly.</span>
+                </div>
+                
+
+                <div class="review-bullet">
+                    <span class="bullet-symbol">•</span>
+                    <span><strong>Rollback &amp; Recovery Risk:</strong> The document does not specify a rollback procedure or fallback configuration in the event of production failure.</span>
+                </div>
+                
+<div class='review-space'></div>
+<p>REVIEW QUESTIONS</p>
+
+                <div class="review-number">
+                    <span class="review-number-value">
+                        1.
+                    </span>
+                    <span>
+                        What specific routes, path mappings, methods, or backend target services are being added, altered, or removed?
+                    </span>
+                </div>
+                
+
+                <div class="review-number">
+                    <span class="review-number-value">
+                        2.
+                    </span>
+                    <span>
+                        What testing was conducted in non-production environments to validate that existing traffic is not disrupted?
+                    </span>
+                </div>
+                
+
+                <div class="review-number">
+                    <span class="review-number-value">
+                        3.
+                    </span>
+                    <span>
+                        What is the defined rollback and disaster recovery plan if routing fails upon deployment to Production?
+                    </span>
+                </div>
+                
+
+                <div class="review-number">
+                    <span class="review-number-value">
+                        4.
+                    </span>
+                    <span>
+                        What specific systems, downstream dependencies, or user-facing services are affected that warrant the &quot;High&quot; business impact classification?
+                    </span>
+                </div>
+                
+
+                <div class="review-number">
+                    <span class="review-number-value">
+                        5.
+                    </span>
+                    <span>
+                        Are there associated changes to security controls, rate limiting, mutual TLS, or authentication tokens for the modified routes?
+                    </span>
+                </div>
+                
+
+                <div class="review-number">
+                    <span class="review-number-value">
+                        6.
+                    </span>
+                    <span>
+                        Is the deployment planned with a zero-downtime strategy (e.g., canary, blue/green) or immediate cutover?
+                    </span>
+                </div>
+                
+<div class='review-space'></div>
+<p>SUGGESTED REVIEW FOCUS</p>
+
+                <div class="review-bullet">
+                    <span class="bullet-symbol">•</span>
+                    <span><strong>Configuration Diff Analysis:</strong> Detailed verification of the exact routing configuration changes compared to the current production baseline.</span>
+                </div>
+                
+
+                <div class="review-bullet">
+                    <span class="bullet-symbol">•</span>
+                    <span><strong>Blast Radius &amp; Dependency Mapping:</strong> Identification of all services and consumer applications impacted by the route changes.</span>
+                </div>
+                
+
+                <div class="review-bullet">
+                    <span class="bullet-symbol">•</span>
+                    <span><strong>Deployment &amp; Contingency Strategy:</strong> Review of validation mechanisms (health checks, monitoring, alerting) and the step-by-step rollback plan.</span>
+                </div>
+                
+        </div>
+
+    </div>
+    
+
+            <div class="human-review">
+
+                <strong>
+                    Human Architecture Review:
+                </strong>
+
+                Pending Architecture Review
+
+            </div>
+
+        </div>
+        
+
+<div class="architecture-note">
+
+    <strong>Workflow:</strong>
+
+    Architecture Artifact
+    -&gt;
+    Change Detection
+    -&gt;
+    Metadata Extraction
+    -&gt;
+    Standards Validation
+    -&gt;
+    Change Classification
+    -&gt;
+    AI-Assisted Review
+    -&gt;
+    Human Architecture Review
+    -&gt;
+    Dashboard
+
+</div>
+
+<div class="footer">
+
+    Prototype for enterprise architecture enablement
+    and workflow automation.
+
+    Current implementation uses local Python automation,
+    Gemini AI analysis, persistent JSON audit records,
+    and generated HTML.
+
+</div>
+
+</main>
+
+</body>
+
+</html>
