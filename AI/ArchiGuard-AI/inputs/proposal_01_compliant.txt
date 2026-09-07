@@ -1,0 +1,13 @@
+Architecture Proposal: Customer Analytics Platform
+
+The proposed customer analytics platform will process sensitive customer information in a cloud environment.
+
+Customer data will be encrypted at rest using AES-256.
+
+The application will integrate with the company's legacy customer database through a secure REST API. The application will not connect directly to the database.
+
+The platform will be deployed across multiple cloud regions to support recovery if one region becomes unavailable.
+
+Authentication will use the company's centralized identity provider. Role-based access control (RBAC) will be used to restrict access according to user responsibilities.
+
+Security-relevant application activity will be recorded in centralized audit logs for monitoring and investigation.

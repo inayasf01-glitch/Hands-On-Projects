@@ -1,0 +1,13 @@
+Architecture Proposal: Legacy Customer Reporting System
+
+The proposed reporting system will process customer information.
+
+Customer data will be stored without encryption because the application is located inside the company's private network.
+
+The application will connect directly to the legacy customer database using a database connection.
+
+The system will be deployed in a single cloud region.
+
+Users will authenticate using accounts created directly within the application.
+
+The application will not maintain centralized security audit logs.
