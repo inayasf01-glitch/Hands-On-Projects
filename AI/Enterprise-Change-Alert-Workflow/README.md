@@ -1,550 +1,518 @@
-﻿\# Enterprise Change Alert Workflow
+# 🚨 Enterprise Change Alert Workflow
 
+## 📡 Automated Enterprise Architecture Change Monitoring & Alerting
 
+Enterprise Change Alert Workflow is a Python-based automation prototype designed to monitor technology architecture files, detect changes, extract relevant metadata, classify architectural changes, evaluate potential impact, and generate structured alerts.
 
-A Python-based enterprise architecture enablement prototype that detects architecture artifact changes, validates required metadata against governance rules, classifies change priority, and uses generative AI to assist with architecture review.
+The project demonstrates how automation and AI-assisted analysis can reduce manual effort in enterprise architecture change monitoring by transforming file changes into structured, reviewable information.
 
+---
 
+# 📋 Project Overview
 
-\## Overview
+Enterprise architecture environments frequently contain large collections of architecture documentation, system descriptions, and technology artifacts.
 
+Manually monitoring these artifacts for changes can become repetitive and difficult to scale.
 
+This project explores a lightweight automated approach:
 
-Enterprise architecture teams need reliable ways to identify changes, maintain consistent architecture information, and prioritize items that require human review.
+Architecture Files → Change Detection → Metadata Extraction → Change Classification → AI-Assisted Review → Standards Validation → Alert Generation
 
+The goal is not to replicate a production enterprise architecture platform, but to demonstrate the underlying concepts of:
 
+- Change monitoring
+- Event-driven automation
+- Metadata extraction
+- Change classification
+- AI-assisted architecture review
+- Technology standards validation
+- Structured alert generation
+- Automated documentation
+- Dashboard-based visibility
 
-This project prototypes that workflow locally using Python, deterministic governance rules, Google Gemini, JSON-based audit data, and an HTML dashboard.
+---
 
+# 🎯 Project Objectives
 
+The project was developed to explore how enterprise architecture teams could automate repetitive monitoring and review activities.
 
-The system is designed around a simple principle:
+The primary objectives were to:
 
+1. Detect changes to monitored architecture files.
+2. Determine which files were newly created or modified.
+3. Extract useful metadata from changed files.
+4. Classify the type of architectural change.
+5. Apply AI-assisted analysis to architectural information.
+6. Validate changes against defined technology standards.
+7. Generate structured change alerts.
+8. Maintain machine-readable alert and state records.
+9. Provide a simple dashboard for reviewing generated information.
 
+---
 
-> \*\*Deterministic rules establish governance status; AI provides advisory analysis; humans make the final architecture decision.\*\*
+# 🏗️ Workflow Architecture
 
-
-
-\## Workflow
-
-
-
-```text
-
-Architecture Artifact
-
-&#x20;       |
-
-&#x20;       v
-
+Monitored Architecture Files
+        ↓
 Change Detection
-
-&#x20;       |
-
-&#x20;       v
-
-Metadata Parsing
-
-&#x20;       |
-
-&#x20;       v
-
-Standards Validation
-
-&#x20;       |
-
-&#x20;       v
-
+        ↓
+Metadata Extraction
+        ↓
 Change Classification
-
-&#x20;       |
-
-&#x20;       v
-
+        ↓
 AI-Assisted Architecture Review
+        ↓
+Standards Validation
+        ↓
+Alert Generation
+        ↓
+JSON + HTML Artifacts
+        ↓
+Dashboard Visibility
 
-&#x20;       |
+---
 
-&#x20;       v
+# 🔄 Project Evolution
 
-Review Queue / Audit Log
+The project was designed around a modular architecture so that individual stages of the workflow could be developed and tested independently.
 
-&#x20;       |
+## Stage 1 — File Monitoring
 
-&#x20;       v
+The system maintains a collection of architecture files that represent technology systems or platforms.
 
-HTML Dashboard
+Example monitored artifacts include:
 
-Key Features
+- API Gateway architecture
+- Customer platform architecture
+- Legacy reporting architecture
 
-Detects new or modified architecture artifacts
+The system tracks file state so that subsequent executions can determine whether an architecture artifact has changed.
 
-Parses structured architecture metadata from text-based proposals
+## Stage 2 — Change Detection
 
-Validates required architecture fields
+The workflow compares the current state of monitored files with previously recorded file information.
 
-Identifies governance metadata gaps
+This allows the system to identify:
 
-Classifies changes by business-impact priority
+- New files
+- Modified files
+- Previously observed files
 
-Determines whether architecture review is required
+## Stage 3 — Metadata Extraction
 
-Generates AI-assisted architecture summaries
+When a change is detected, the system extracts relevant information from the architecture artifact.
 
-Identifies potential technical, security, operational, integration, scalability, and governance risks
+The metadata provides structured context for subsequent classification and review.
 
-Generates architecture review questions
+## Stage 4 — Change Classification
 
-Suggests areas for human review
+Detected changes are categorized to provide a more structured representation of the architectural modification.
 
-Maintains structured audit information
+This creates a transition from a raw file-level event into information that can be reviewed by an architecture workflow.
 
-Generates an HTML dashboard for change visibility and review tracking
+## Stage 5 — AI-Assisted Architecture Review
 
-Technology Stack
+The workflow can apply generative-AI analysis to architectural information to assist with interpretation and review.
 
-Python 3
+The AI-assisted component demonstrates how generative AI could support architecture teams by helping analyze technology changes and surface relevant considerations.
 
-Google Gemini API
+## Stage 6 — Standards Validation
 
-python-dotenv
+The architecture information is evaluated against defined technology standards.
 
-JSON
+This introduces a governance-oriented component into the workflow rather than treating file changes as isolated events.
 
-HTML/CSS
+## Stage 7 — Alert Generation
 
-PowerShell / Windows
+The workflow generates structured alert information containing the results of the change analysis.
 
-Git / GitHub
+The generated information can then be reviewed through the project's dashboard and stored artifacts.
 
-Project Structure
+---
 
-Enterprise-Change-Alert-Workflow/
+# ⚙️ Core Components
 
-Γöé
+## 1. Change Monitoring
 
-Γö£ΓöÇΓöÇ alerts/
+Monitors defined architecture files and maintains file-state information between workflow executions.
 
-Γöé   ΓööΓöÇΓöÇ dashboard.html
+Purpose:
 
-Γöé
+- Detect architectural documentation changes
+- Maintain historical file state
+- Identify files requiring review
 
-Γö£ΓöÇΓöÇ monitored\_files/
+## 2. Metadata Extraction
 
-Γöé   Γö£ΓöÇΓöÇ api\_gateway\_v3.txt
+Extracts structured information from architecture artifacts.
 
-Γöé   Γö£ΓöÇΓöÇ customer\_platform\_v2.txt
+Purpose:
 
-Γöé   ΓööΓöÇΓöÇ legacy\_reporting\_v1.txt
+- Convert unstructured file information into usable metadata
+- Provide context for downstream analysis
+- Support consistent processing
 
-Γöé
+## 3. Change Classification
 
-Γö£ΓöÇΓöÇ src/
+Determines the category or nature of a detected architecture change.
 
-Γöé   Γö£ΓöÇΓöÇ ai\_architecture\_review.py
+Purpose:
 
-Γöé   Γö£ΓöÇΓöÇ change\_alert.py
+- Structure change information
+- Support downstream review
+- Improve alert organization
 
-Γöé   Γö£ΓöÇΓöÇ change\_classifier.py
+## 4. AI-Assisted Architecture Review
 
-Γöé   Γö£ΓöÇΓöÇ dashboard.py
+Uses generative-AI analysis as part of the architecture review workflow.
 
-Γöé   Γö£ΓöÇΓöÇ metadata\_parser.py
+Purpose:
 
-Γöé   ΓööΓöÇΓöÇ standards\_validator.py
+- Assist with interpretation of architectural information
+- Surface potential architecture considerations
+- Demonstrate AI-assisted enterprise technology workflows
 
-Γöé
+## 5. Standards Validation
 
-Γö£ΓöÇΓöÇ .gitignore
+Evaluates architectural information against defined technology standards.
 
-ΓööΓöÇΓöÇ README.md
+Purpose:
 
-Architecture Review Pipeline
+- Introduce governance considerations
+- Identify potential standards-related issues
+- Support repeatable architecture review
 
-1\. Change Detection
+## 6. Alert Generation
 
+Creates structured records describing detected architectural changes and their associated analysis.
 
+Purpose:
 
-The monitoring workflow compares architecture artifacts against previously recorded file state and identifies new or modified artifacts.
+- Produce actionable review information
+- Maintain machine-readable records
+- Support dashboard visibility
 
+---
 
+# 📊 Generated Artifacts
 
-2\. Metadata Parsing
+The workflow produces several structured artifacts.
 
+## alert_log.json
 
+Stores generated change-alert information in JSON format.
 
-Architecture proposals are parsed into structured metadata including:
+This provides a machine-readable representation of detected events and their associated analysis.
 
+## file_state.json
 
+Maintains information used by the monitoring process to determine whether architecture files have changed.
 
-System
+## dashboard.html
 
-Version
+Provides a browser-based representation of generated architecture-change information.
 
-Change Type
+Together, these artifacts demonstrate how a monitoring workflow can transform file-level events into structured, reviewable information.
 
-Description
+---
 
-Owner
+# 🖥️ Interactive Demonstration
 
-Business Impact
+The project includes a Streamlit-based interface that provides visibility into the workflow.
 
-Environment
+The interface presents the workflow as a sequence of stages:
 
-Review Required
+Monitor → Detect → Metadata → Classify → Review → Validate → Alert
 
-3\. Standards Validation
+The interface allows the workflow to be executed from a single interface and provides visibility into the generated results.
 
+The demonstration shows the complete process from architecture-file monitoring through automated change detection and alert generation.
 
+---
 
-Required metadata fields are checked using deterministic validation rules.
+# 📁 Project Structure
 
+Enterprise-Change-Alert-Workflow
+│
+├── alerts/
+│   ├── alert_log.json
+│   ├── dashboard.html
+│   └── file_state.json
+│
+├── monitored_files/
+│   ├── api-gateway_v3.txt
+│   ├── customer_platform_v2.txt
+│   └── legacy_reporting_v1.txt
+│
+├── src/
+│   ├── ai_architecture_review.py
+│   ├── change_alert.py
+│   ├── change_classifier.py
+│   ├── dashboard.py
+│   ├── metadata_parser.py
+│   └── standards_validator.py
+│
+└── README.md
 
+---
 
-A complete artifact passes validation.
+# 🛠️ Technology Stack
 
+## Programming
 
+- Python
 
-An artifact with missing required metadata fails validation and receives elevated governance risk.
+## Application Interface
 
+- Streamlit
 
+## Data & Artifacts
 
-4\. Change Classification
+- JSON
+- HTML
+- Markdown/text-based architecture artifacts
 
+## AI
 
+- Generative AI
+- AI-assisted architecture analysis
 
-Changes are classified according to business impact:
+## Development Tools
 
+- PyCharm
+- Git
+- GitHub
 
+---
 
-High
+# 🏢 Enterprise Architecture Concepts
 
-Medium
+The project demonstrates several concepts relevant to enterprise technology and architecture operations.
 
-Low
+## Architecture Change Management
 
+Monitoring architecture artifacts for changes creates a foundation for automated change-management workflows.
 
+## Technology Governance
 
-Validation failures also increase the governance risk classification.
+Standards validation introduces governance considerations into the architecture review process.
 
+## Process Automation
 
+The workflow automates multiple repetitive stages that would otherwise require manual monitoring and review.
 
-5\. AI-Assisted Architecture Review
+## Information Management
 
+Structured metadata and JSON artifacts make architecture-change information easier to organize and process.
 
+## Knowledge Discovery
 
-Google Gemini provides advisory analysis based only on the architecture proposal.
+AI-assisted analysis demonstrates how generative AI can support the interpretation and review of architecture information.
 
+## Operational Visibility
 
+The generated dashboard provides a centralized view of workflow results.
 
-The AI produces:
+---
 
+# 🤖 AI Governance Approach
 
+AI is used as an assistive component rather than an autonomous decision-maker.
 
-Architecture Summary
+The project demonstrates AI-assisted analysis while maintaining structured processing and standards validation around the AI component.
 
-Potential Risks
+This approach reflects an important enterprise technology principle:
 
-Review Questions
+AI can assist with analysis and knowledge discovery while structured rules and human review remain important for governance-sensitive decisions.
 
-Suggested Review Focus
+The prototype therefore separates:
 
+- Automated monitoring
+- AI-assisted analysis
+- Standards-based validation
+- Alert generation
 
+This makes the workflow easier to understand, evaluate, and extend.
 
-The AI does not make the final architecture approval decision.
+---
 
+# 🧪 Example Scenarios
 
+## Scenario 1 — Architecture File Modified
 
-6\. Dashboard
+A monitored architecture file is changed.
 
+The workflow:
 
+1. Detects the modification.
+2. Extracts relevant metadata.
+3. Classifies the change.
+4. Performs architecture review.
+5. Validates the information.
+6. Generates a structured alert.
 
-The workflow generates an HTML dashboard containing:
+## Scenario 2 — New Architecture Artifact
 
+A new architecture file is introduced into the monitored environment.
 
+The workflow identifies the new artifact and processes it through the same monitoring and review pipeline.
 
-Total changes
+This demonstrates how the prototype can support repeatable processing rather than relying exclusively on manual inspection.
 
-Systems affected
+---
 
-New artifacts
+# 📈 Automation Value
 
-Modified artifacts
+The project demonstrates how a multi-stage architecture-monitoring workflow can reduce repetitive manual effort.
 
-Validation results
+Instead of requiring an architecture professional to manually:
 
-High-priority changes
+Check files
+↓
+Identify changes
+↓
+Read documentation
+↓
+Interpret changes
+↓
+Check standards
+↓
+Create an alert
 
-High-governance-risk changes
+the prototype automates these stages into a repeatable workflow:
 
-Review queue
+File Change
+↓
+Automated Detection
+↓
+Automated Analysis
+↓
+Standards Review
+↓
+Structured Alert
 
-Architecture change details
+The result is a more consistent and repeatable approach to architecture-change monitoring.
 
-AI-assisted review information
+---
 
-Example Scenarios
+# 🧠 Engineering Skills Demonstrated
 
+This project provided practical experience with:
 
+- Python application development
+- Modular software architecture
+- File-system monitoring
+- State tracking
+- Metadata extraction
+- Data processing
+- JSON-based persistence
+- HTML dashboard generation
+- Streamlit interfaces
+- Generative-AI integration
+- Prompt-based AI analysis
+- Technology standards validation
+- Workflow automation
+- Git/GitHub project organization
+- Enterprise architecture concepts
 
-The prototype includes three architecture artifacts representing different governance conditions.
+---
 
+# 🎓 Learning Outcomes
 
+Through this project, I developed a stronger understanding of how software automation can be applied to enterprise technology processes.
 
-Internal API Gateway
+Key learning outcomes include:
 
-Production environment
+## 1. Designing Modular Workflows
 
-High business impact
+Breaking a larger automation problem into independent processing stages makes the system easier to develop and maintain.
 
-Complete required metadata
+## 2. Combining Deterministic Logic with AI
 
-Architecture review required
+The project demonstrates how rule-based processing and generative-AI analysis can operate within the same workflow.
 
-Customer Data Platform
+## 3. Managing Application State
 
-Production environment
+Tracking file state is essential for distinguishing new events from previously processed information.
 
-Medium business impact
+## 4. Structuring Enterprise Information
 
-Complete required metadata
+Converting architecture changes into structured records makes the resulting information easier to review and reuse.
 
-Architecture review required
+## 5. Building Human-Readable Interfaces
 
-Legacy Reporting Platform
+The Streamlit interface demonstrates how technical automation can be presented through a more accessible workflow-oriented interface.
 
-Production environment
+---
 
-Missing required metadata
+# 🔮 Future Enhancements
 
-Validation failure
+The current project is a Python-based proof of concept. Future development could extend the prototype into a more enterprise-integrated workflow.
 
-Elevated governance risk
+Potential enhancements include:
 
-Architecture review required
+- SharePoint-based architecture repositories
+- Microsoft Teams notifications
+- Microsoft Power Automate integration
+- SAP LeanIX integration
+- Enterprise identity and access controls
+- Persistent databases
+- More advanced change classification
+- Expanded architecture standards
+- Human approval workflows
+- Production-grade monitoring
+- Enterprise notification systems
 
+These integrations are future enhancements and are not part of the current prototype implementation.
 
+---
 
-These examples demonstrate how the workflow distinguishes between complete architecture information and governance gaps.
+# 📌 Current Scope
 
+This project is a student-built proof of concept demonstrating enterprise architecture change monitoring, automation, AI-assisted analysis, and structured alert generation.
 
+It does not represent a production enterprise architecture governance platform.
 
-AI Governance Approach
+The current implementation operates on local architecture files and uses simulated enterprise artifacts to demonstrate the underlying workflow concepts.
 
+---
 
+# 💼 Why This Project Matters
 
-The project intentionally separates deterministic governance logic from generative AI.
+Enterprise technology environments generate large amounts of architectural information that must be monitored, reviewed, and maintained.
 
+This project explores how automation and AI can help transform that process from a primarily manual activity into a structured workflow.
 
+The broader concept is:
 
-Deterministic Logic
+Detect → Understand → Validate → Alert
 
+This approach connects software engineering, artificial intelligence, automation, and enterprise architecture into a single practical project.
 
+---
 
-Used for:
+# 👩‍💻 Author
 
-
-
-Required-field validation
-
-Governance status
-
-Business-impact classification
-
-Review requirement determination
-
-Generative AI
-
-
-
-Used for:
-
-
-
-Architecture summarization
-
-Risk identification
-
-Review-question generation
-
-Suggested review focus
-
-
-
-This separation reduces the risk of allowing an LLM to independently determine governance approval.
-
-
-
-The intended operating model is:
-
-
-
-Rules ΓåÆ AI Assistance ΓåÆ Human Architecture Review
-
-
-
-Security Considerations
-
-
-
-The Gemini API key is stored locally in a .env file and is excluded from version control through .gitignore.
-
-
-
-The repository does not contain the API credential.
-
-
-
-Do not commit .env or other secrets to source control.
-
-
-
-Running the Project
-
-1\. Create a virtual environment
-
-python -m venv .venv
-
-2\. Activate the environment
-
-.\\.venv\\Scripts\\Activate.ps1
-
-3\. Install dependencies
-
-pip install google-genai python-dotenv
-
-4\. Configure the Gemini API key
-
-
-
-Create a local .env file:
-
-
-
-GEMINI\_API\_KEY=your\_api\_key\_here
-
-
-
-Do not commit this file.
-
-
-
-5\. Run change detection
-
-python -m src.change\_alert
-
-6\. Generate the dashboard
-
-python -m src.dashboard
-
-
-
-The resulting dashboard is generated at:
-
-
-
-alerts/dashboard.html
-
-Current Scope
-
-
-
-This implementation is a local Python prototype designed to demonstrate enterprise architecture workflow concepts.
-
-
-
-It does not currently implement live integrations with:
-
-
-
-Microsoft SharePoint
-
-Microsoft Teams
-
-Power Automate
-
-SAP LeanIX
-
-
-
-Those platforms represent potential future integration points rather than technologies currently implemented by this project.
-
-
-
-Future Enhancements
-
-
-
-Potential future development includes:
-
-
-
-SharePoint-based architecture artifact ingestion
-
-Power Automate workflow integration
-
-Microsoft Teams review notifications
-
-Enterprise architecture repository integration
-
-SAP LeanIX integration
-
-Automated metadata extraction from richer document formats
-
-Role-based review workflows
-
-Persistent architecture repositories
-
-More sophisticated change-diff analysis
-
-Additional governance and architecture standards
-
-AI-assisted knowledge discovery
-
-Architecture documentation reuse
-
-Automated workflow notifications
-
-Why This Project Matters
-
-
-
-This project explores how software automation and generative AI can support enterprise architecture teams without replacing human governance decisions.
-
-
-
-It demonstrates practical experience with:
-
-
-
-Python automation
-
-Structured data processing
-
-Governance validation
-
-Workflow design
-
-Generative AI integration
-
-AI-assisted decision support
-
-Auditability
-
-Dashboard development
-
-Enterprise architecture concepts
-
-Responsible AI boundaries
-
-
-Author
 Inaya Shahid
 
-Information Technology Student
+Information Technology Student | AI & Cybersecurity Enthusiast
 
-AI, Cybersecurity, Software Development \& Emerging Technologies
+Interested in:
+
+- Artificial Intelligence
+- Enterprise Technology
+- Cybersecurity
+- Software Engineering
+- Secure Computing
+- Emerging Technologies
+
+---
+
+# 🙏 Acknowledgements
+
+This project was developed as part of my independent technical portfolio development and exploration of AI-assisted enterprise technology workflows.
+
+The project combines concepts from software development, artificial intelligence, cybersecurity, enterprise architecture, and workflow automation.
 
 
 Video Evidence:
