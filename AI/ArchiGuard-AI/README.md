@@ -674,6 +674,12 @@ This project was developed as part of my independent technical portfolio develop
 
 The project combines concepts from software development, artificial intelligence, cybersecurity, enterprise architecture, technology governance, and workflow automation.
 
+🔗 Project Resources
+
+Live Application:
+https://inayasf01-glitch-hands-on-projects-aiarchiguard-aiapp-dctb0e.streamlit.app/
+
+
 Video Evidence:
 
 https://github.com/user-attachments/assets/5e7d0b8c-6fee-4f71-a44b-edcad4083b6a
