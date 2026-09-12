@@ -1,257 +1,397 @@
-# 🚨 Enterprise Change Alert Workflow
+# 🛡️ ArchiGuard AI
 
-## 📡 Automated Enterprise Architecture Change Monitoring & Alerting
+## 🤖 Automated Enterprise Architecture Compliance Auditor
 
-Enterprise Change Alert Workflow is a Python-based automation prototype designed to monitor technology architecture files, detect changes, extract relevant metadata, classify architectural changes, evaluate potential impact, and generate structured alerts.
+ArchiGuard AI is a Python-based proof-of-concept that uses generative AI to evaluate unstructured technology architecture proposals against defined enterprise technology standards.
 
-The project demonstrates how automation and AI-assisted analysis can reduce manual effort in enterprise architecture change monitoring by transforming file changes into structured, reviewable information.
+The system transforms an architecture proposal into a structured compliance assessment containing an overall compliance decision, standard-by-standard evaluation, supporting evidence, identified violations, remediation recommendations, and review limitations.
+
+The project demonstrates how AI and automation can reduce repetitive manual effort in enterprise architecture review while producing consistent and documented results.
 
 ---
 
 # 📋 Project Overview
 
-Enterprise architecture environments frequently contain large collections of architecture documentation, system descriptions, and technology artifacts.
+Enterprise architecture proposals often contain large amounts of unstructured technical information that must be reviewed against organizational technology and security standards.
 
-Manually monitoring these artifacts for changes can become repetitive and difficult to scale.
+Manually performing these reviews can require significant time and can result in inconsistent documentation.
 
-This project explores a lightweight automated approach:
+ArchiGuard AI explores an automated approach:
 
-Architecture Files → Change Detection → Metadata Extraction → Change Classification → AI-Assisted Review → Standards Validation → Alert Generation
+Architecture Proposal → Python Compliance Engine → Enterprise Technology Standards → Gemini AI → Compliance Evaluation → Markdown Compliance Report
 
-The goal is not to replicate a production enterprise architecture platform, but to demonstrate the underlying concepts of:
+The prototype reads architecture proposals, evaluates them against a defined set of enterprise technology standards, and automatically generates a structured compliance report.
 
-- Change monitoring
-- Event-driven automation
-- Metadata extraction
-- Change classification
-- AI-assisted architecture review
-- Technology standards validation
-- Structured alert generation
-- Automated documentation
-- Dashboard-based visibility
+The goal is not to replace enterprise architects or governance professionals.
+
+Instead, the project demonstrates how generative AI can assist with repetitive architecture-review and documentation activities while keeping the evaluation structured and reviewable.
 
 ---
 
 # 🎯 Project Objectives
 
-The project was developed to explore how enterprise architecture teams could automate repetitive monitoring and review activities.
+The project was developed to explore how generative AI and Python automation could support enterprise architecture governance workflows.
 
 The primary objectives were to:
 
-1. Detect changes to monitored architecture files.
-2. Determine which files were newly created or modified.
-3. Extract useful metadata from changed files.
-4. Classify the type of architectural change.
-5. Apply AI-assisted analysis to architectural information.
-6. Validate changes against defined technology standards.
-7. Generate structured change alerts.
-8. Maintain machine-readable alert and state records.
-9. Provide a simple dashboard for reviewing generated information.
+1. Process unstructured technology architecture proposals.
+2. Evaluate proposals against defined enterprise technology standards.
+3. Use generative AI to assist with architecture compliance analysis.
+4. Extract supporting evidence from architecture proposals.
+5. Identify potential standards violations.
+6. Generate remediation recommendations.
+7. Identify areas requiring additional human review.
+8. Produce structured compliance reports automatically.
+9. Create a repeatable architecture review workflow.
+10. Demonstrate AI-assisted documentation automation.
 
 ---
 
-# 🏗️ Workflow Architecture
+# 🏗️ Architecture
 
-Monitored Architecture Files
+Architecture Proposal
         ↓
-Change Detection
+Python Compliance Engine
         ↓
-Metadata Extraction
+Enterprise Technology Standards
         ↓
-Change Classification
+Gemini AI
         ↓
-AI-Assisted Architecture Review
+Compliance Evaluation
         ↓
-Standards Validation
-        ↓
-Alert Generation
-        ↓
-JSON + HTML Artifacts
-        ↓
-Dashboard Visibility
+Markdown Compliance Report
+
+The Python compliance engine manages the workflow, loads the defined enterprise standards, processes architecture proposals, sends the relevant analysis to Gemini, and generates structured Markdown compliance reports.
 
 ---
 
-# 🔄 Project Evolution
+# 🔄 Project Workflow
 
-The project was designed around a modular architecture so that individual stages of the workflow could be developed and tested independently.
+ArchiGuard AI follows a repeatable architecture-review pipeline.
 
-## Stage 1 — File Monitoring
+## Stage 1 — Architecture Proposal
 
-The system maintains a collection of architecture files that represent technology systems or platforms.
+The system receives an unstructured technology architecture proposal.
 
-Example monitored artifacts include:
+The proposal contains technical information that must be evaluated against the organization's defined standards.
 
-- API Gateway architecture
-- Customer platform architecture
-- Legacy reporting architecture
+The prototype includes multiple test proposals representing different compliance conditions.
 
-The system tracks file state so that subsequent executions can determine whether an architecture artifact has changed.
+---
 
-## Stage 2 — Change Detection
+## Stage 2 — Standards Loading
 
-The workflow compares the current state of monitored files with previously recorded file information.
+The compliance engine loads a defined set of enterprise technology standards.
 
-This allows the system to identify:
+These standards establish the criteria used during the architecture evaluation.
 
-- New files
-- Modified files
-- Previously observed files
+The current prototype evaluates five standards:
 
-## Stage 3 — Metadata Extraction
+- Customer data encryption
+- Legacy database integration
+- Business continuity and disaster recovery
+- Centralized identity and access management
+- Security audit logging
 
-When a change is detected, the system extracts relevant information from the architecture artifact.
+---
 
-The metadata provides structured context for subsequent classification and review.
+## Stage 3 — Automated Processing
 
-## Stage 4 — Change Classification
+The Python application processes the architecture proposal and prepares the information for AI-assisted analysis.
 
-Detected changes are categorized to provide a more structured representation of the architectural modification.
+This creates a repeatable processing pipeline rather than requiring each proposal to be manually reviewed and documented.
 
-This creates a transition from a raw file-level event into information that can be reviewed by an architecture workflow.
+---
 
-## Stage 5 — AI-Assisted Architecture Review
+## Stage 4 — Generative-AI Analysis
 
-The workflow can apply generative-AI analysis to architectural information to assist with interpretation and review.
+Gemini AI analyzes the architecture proposal against the defined enterprise standards.
 
-The AI-assisted component demonstrates how generative AI could support architecture teams by helping analyze technology changes and surface relevant considerations.
+The AI-assisted analysis identifies:
 
-## Stage 6 — Standards Validation
+- Evidence supporting compliance
+- Potential violations
+- Areas requiring additional review
+- Relevant architecture considerations
 
-The architecture information is evaluated against defined technology standards.
+The project uses generative AI as an analytical assistant within a structured workflow.
 
-This introduces a governance-oriented component into the workflow rather than treating file changes as isolated events.
+---
 
-## Stage 7 — Alert Generation
+## Stage 5 — Compliance Evaluation
 
-The workflow generates structured alert information containing the results of the change analysis.
+Each enterprise technology standard receives an individual assessment.
 
-The generated information can then be reviewed through the project's dashboard and stored artifacts.
+The system evaluates whether the proposal:
+
+- Satisfies the standard
+- Violates the standard
+- Requires additional review
+
+The resulting assessments are combined into an overall compliance status.
+
+---
+
+## Stage 6 — Compliance Decision
+
+The system produces an overall architecture compliance status.
+
+The supported outcomes are:
+
+- PASSED
+- FAILED
+- NEEDS REVIEW
+
+This provides a concise summary of the architecture proposal's overall compliance state.
+
+---
+
+## Stage 7 — Automated Documentation
+
+The results are automatically written into a structured Markdown compliance report.
+
+Each report contains:
+
+- Overall Status
+- Executive Summary
+- Standards Evaluation
+- Evidence
+- Assessment
+- Violations
+- Remediation
+- Review Limitations
+
+This demonstrates how AI-assisted analysis can be combined with documentation automation.
 
 ---
 
 # ⚙️ Core Components
 
-## 1. Change Monitoring
+## 1. Architecture Proposal Processing
 
-Monitors defined architecture files and maintains file-state information between workflow executions.
-
-Purpose:
-
-- Detect architectural documentation changes
-- Maintain historical file state
-- Identify files requiring review
-
-## 2. Metadata Extraction
-
-Extracts structured information from architecture artifacts.
+Processes unstructured technology architecture proposals as the input to the compliance workflow.
 
 Purpose:
 
-- Convert unstructured file information into usable metadata
-- Provide context for downstream analysis
-- Support consistent processing
-
-## 3. Change Classification
-
-Determines the category or nature of a detected architecture change.
-
-Purpose:
-
-- Structure change information
-- Support downstream review
-- Improve alert organization
-
-## 4. AI-Assisted Architecture Review
-
-Uses generative-AI analysis as part of the architecture review workflow.
-
-Purpose:
-
-- Assist with interpretation of architectural information
-- Surface potential architecture considerations
-- Demonstrate AI-assisted enterprise technology workflows
-
-## 5. Standards Validation
-
-Evaluates architectural information against defined technology standards.
-
-Purpose:
-
-- Introduce governance considerations
-- Identify potential standards-related issues
-- Support repeatable architecture review
-
-## 6. Alert Generation
-
-Creates structured records describing detected architectural changes and their associated analysis.
-
-Purpose:
-
-- Produce actionable review information
-- Maintain machine-readable records
-- Support dashboard visibility
+- Provide architecture information for evaluation
+- Support repeatable processing
+- Allow different architecture scenarios to be tested
 
 ---
 
-# 📊 Generated Artifacts
+## 2. Enterprise Technology Standards
 
-The workflow produces several structured artifacts.
+Provides the defined standards against which architecture proposals are evaluated.
 
-## alert_log.json
+The current standards cover:
 
-Stores generated change-alert information in JSON format.
+- Customer data encryption
+- Legacy database integration
+- Business continuity and disaster recovery
+- Centralized identity and access management
+- Security audit logging
 
-This provides a machine-readable representation of detected events and their associated analysis.
+These standards provide a consistent evaluation framework for the prototype.
 
-## file_state.json
+---
 
-Maintains information used by the monitoring process to determine whether architecture files have changed.
+## 3. Python Compliance Engine
 
-## dashboard.html
+The Python application coordinates the compliance-review workflow.
 
-Provides a browser-based representation of generated architecture-change information.
+It:
 
-Together, these artifacts demonstrate how a monitoring workflow can transform file-level events into structured, reviewable information.
+- Loads architecture proposals
+- Loads enterprise technology standards
+- Sends analysis requests to Gemini
+- Processes AI-generated evaluations
+- Generates compliance reports
+- Stores the resulting documentation
+
+This creates the automation layer connecting the architecture proposal, AI analysis, and final report.
+
+---
+
+## 4. Generative-AI Analysis
+
+Gemini provides the generative-AI component used to analyze architecture proposals.
+
+The AI-assisted workflow is designed to evaluate technical information against defined standards and return structured findings.
+
+This demonstrates a practical application of generative AI beyond conversational use cases.
+
+---
+
+## 5. Compliance Evaluation
+
+The system organizes the AI-assisted analysis into standard-by-standard evaluations.
+
+Each evaluation includes:
+
+- Compliance status
+- Evidence
+- Assessment
+
+This provides greater transparency than relying only on a single overall AI-generated conclusion.
+
+---
+
+## 6. Remediation Recommendations
+
+When standards are not satisfied, the generated report identifies violations and provides remediation recommendations.
+
+This allows the output to move beyond simply identifying a problem and toward documenting possible next steps.
+
+---
+
+## 7. Review Limitations
+
+The system also records areas where additional information or human review may be required.
+
+This is important because architecture governance decisions can depend on information that may not be present in an unstructured proposal.
+
+The prototype therefore explicitly documents review limitations rather than presenting every AI-generated conclusion as definitive.
+
+---
+
+# 📊 Compliance Report Structure
+
+Each generated report follows a consistent structure.
+
+## Overall Status
+
+Provides the final compliance decision:
+
+- PASSED
+- FAILED
+- NEEDS REVIEW
+
+## Executive Summary
+
+Provides a concise explanation of the architecture's overall compliance condition.
+
+## Standards Evaluation
+
+Provides an individual assessment for each defined enterprise technology standard.
+
+Each standard includes:
+
+- Status
+- Evidence
+- Assessment
+
+## Violations
+
+Documents standards that were not satisfied.
+
+## Remediation
+
+Provides recommended actions for addressing identified violations.
+
+## Review Limitations
+
+Documents information gaps, assumptions, or areas where additional review may be required.
+
+---
+
+# 🧪 Test Cases
+
+The project includes test architecture proposals designed to demonstrate different compliance outcomes.
+
+## Proposal 01 — Compliant Architecture
+
+Expected result:
+
+PASSED
+
+The proposal satisfies all five defined enterprise technology standards.
+
+The resulting compliance report documents the supporting evidence and provides a standard-by-standard assessment.
+
+---
+
+## Proposal 02 — Non-Compliant Architecture
+
+Expected result:
+
+FAILED
+
+The proposal contains multiple standards violations and an area requiring additional review.
+
+The generated report identifies the violations and provides remediation recommendations.
+
+This test case demonstrates that the system can distinguish between compliant and non-compliant architecture scenarios.
+
+---
+
+# 🔍 Example Standards
+
+ArchiGuard AI currently evaluates the following five enterprise technology standards.
+
+## 1. Customer Data Encryption
+
+Evaluates whether customer data is appropriately protected through encryption.
+
+## 2. Legacy Database Integration
+
+Evaluates how legacy database systems are integrated with newer architecture components.
+
+## 3. Business Continuity and Disaster Recovery
+
+Evaluates whether the proposed architecture addresses resilience and recovery requirements.
+
+## 4. Centralized Identity and Access Management
+
+Evaluates whether identity and access management are handled through centralized mechanisms.
+
+## 5. Security Audit Logging
+
+Evaluates whether security-relevant activity is appropriately logged and available for review.
 
 ---
 
 # 🖥️ Interactive Demonstration
 
-The project includes a Streamlit-based interface that provides visibility into the workflow.
+The project includes a Streamlit-based interface for demonstrating the automated compliance-review process.
 
-The interface presents the workflow as a sequence of stages:
+The interface allows an architecture proposal to be processed through the compliance workflow and displays the resulting assessment.
 
-Monitor → Detect → Metadata → Classify → Review → Validate → Alert
+The demonstration presents:
 
-The interface allows the workflow to be executed from a single interface and provides visibility into the generated results.
+- Overall compliance status
+- Executive summary
+- Standard-by-standard evaluation
+- Compliance findings
+- Violations
+- Remediation recommendations
+- Review limitations
+- Compliance report output
 
-The demonstration shows the complete process from architecture-file monitoring through automated change detection and alert generation.
+The interface provides a visual representation of the AI-assisted architecture compliance workflow.
 
 ---
 
 # 📁 Project Structure
 
-Enterprise-Change-Alert-Workflow
+ArchiGuard-AI
 │
-├── alerts/
-│   ├── alert_log.json
-│   ├── dashboard.html
-│   └── file_state.json
+├── inputs/
+│   ├── proposal_01_compliant.txt
+│   └── proposal_02_non_compliant.txt
 │
-├── monitored_files/
-│   ├── api-gateway_v3.txt
-│   ├── customer_platform_v2.txt
-│   └── legacy_reporting_v1.txt
+├── outputs/
+│   ├── proposal_01_compliant_compliance_*.md
+│   └── proposal_02_non_compliant_compliance_*.md
+│
+├── standards/
+│   └── enterprise_tech_standards.md
 │
 ├── src/
-│   ├── ai_architecture_review.py
-│   ├── change_alert.py
-│   ├── change_classifier.py
-│   ├── dashboard.py
-│   ├── metadata_parser.py
-│   └── standards_validator.py
+│   └── compliance_engine.py
 │
+├── app.py
+├── requirements.txt
+├── .env.example
 └── README.md
 
 ---
@@ -262,22 +402,27 @@ Enterprise-Change-Alert-Workflow
 
 - Python
 
+## Artificial Intelligence
+
+- Google Gemini API
+- google-genai
+- Generative AI
+
 ## Application Interface
 
 - Streamlit
 
-## Data & Artifacts
+## Configuration
 
-- JSON
-- HTML
-- Markdown/text-based architecture artifacts
+- python-dotenv
 
-## AI
+## Documentation & Data
 
-- Generative AI
-- AI-assisted architecture analysis
+- Markdown
+- Structured compliance reports
+- Text-based architecture proposals
 
-## Development Tools
+## Development & Version Control
 
 - PyCharm
 - Git
@@ -287,111 +432,108 @@ Enterprise-Change-Alert-Workflow
 
 # 🏢 Enterprise Architecture Concepts
 
-The project demonstrates several concepts relevant to enterprise technology and architecture operations.
+The project demonstrates several concepts relevant to enterprise architecture and technology governance.
 
-## Architecture Change Management
+## Architecture Standards Assessment
 
-Monitoring architecture artifacts for changes creates a foundation for automated change-management workflows.
+Architecture proposals are evaluated against a defined set of technology standards.
 
-## Technology Governance
+## Compliance Evaluation
 
-Standards validation introduces governance considerations into the architecture review process.
+The system produces structured compliance decisions instead of relying solely on unstructured AI output.
 
-## Process Automation
+## Evidence-Based Analysis
 
-The workflow automates multiple repetitive stages that would otherwise require manual monitoring and review.
+The compliance assessment incorporates evidence from the architecture proposal to support each standard evaluation.
 
-## Information Management
+## Exception and Review Handling
 
-Structured metadata and JSON artifacts make architecture-change information easier to organize and process.
+The system can identify areas where the available information is insufficient for a definitive assessment.
 
-## Knowledge Discovery
+## Remediation Recommendations
 
-AI-assisted analysis demonstrates how generative AI can support the interpretation and review of architecture information.
+Identified violations are accompanied by recommended remediation actions.
 
-## Operational Visibility
+## Documentation Automation
 
-The generated dashboard provides a centralized view of workflow results.
+The system automatically converts the analysis into a structured compliance report.
+
+## Repeatable Architecture Review
+
+The same evaluation process can be applied to multiple architecture proposals.
 
 ---
 
 # 🤖 AI Governance Approach
 
-AI is used as an assistive component rather than an autonomous decision-maker.
+AI is used as an assistive analytical component rather than an autonomous enterprise governance authority.
 
-The project demonstrates AI-assisted analysis while maintaining structured processing and standards validation around the AI component.
+The system combines:
 
-This approach reflects an important enterprise technology principle:
+- Defined technology standards
+- Structured processing
+- Generative-AI analysis
+- Standard-by-standard evaluation
+- Explicit review limitations
+- Automated documentation
 
-AI can assist with analysis and knowledge discovery while structured rules and human review remain important for governance-sensitive decisions.
+This approach is important because enterprise architecture decisions can have security, operational, and business consequences.
 
-The prototype therefore separates:
-
-- Automated monitoring
-- AI-assisted analysis
-- Standards-based validation
-- Alert generation
-
-This makes the workflow easier to understand, evaluate, and extend.
+The prototype therefore emphasizes structured evaluation and transparent reporting rather than treating an AI-generated response as an unquestionable decision.
 
 ---
 
-# 🧪 Example Scenarios
+# 🔐 Security & Responsible AI Considerations
 
-## Scenario 1 — Architecture File Modified
+The project was designed with the principle that AI-generated architecture analysis should remain reviewable.
 
-A monitored architecture file is changed.
+Important considerations include:
 
-The workflow:
+- Architecture standards are explicitly defined.
+- Compliance results are broken down by individual standard.
+- Evidence is included in the generated report.
+- Violations are documented separately.
+- Remediation recommendations are separated from compliance findings.
+- Review limitations are explicitly recorded.
+- The system is positioned as a proof of concept rather than a production governance authority.
 
-1. Detects the modification.
-2. Extracts relevant metadata.
-3. Classifies the change.
-4. Performs architecture review.
-5. Validates the information.
-6. Generates a structured alert.
-
-## Scenario 2 — New Architecture Artifact
-
-A new architecture file is introduced into the monitored environment.
-
-The workflow identifies the new artifact and processes it through the same monitoring and review pipeline.
-
-This demonstrates how the prototype can support repeatable processing rather than relying exclusively on manual inspection.
+These design choices help make the generated results easier for a human reviewer to inspect.
 
 ---
 
 # 📈 Automation Value
 
-The project demonstrates how a multi-stage architecture-monitoring workflow can reduce repetitive manual effort.
+Traditional architecture compliance review can involve a repetitive process:
 
-Instead of requiring an architecture professional to manually:
+Read Proposal
+↓
+Review Standards
+↓
+Evaluate Compliance
+↓
+Document Evidence
+↓
+Identify Violations
+↓
+Recommend Remediation
+↓
+Create Review Report
 
-Check files
-↓
-Identify changes
-↓
-Read documentation
-↓
-Interpret changes
-↓
-Check standards
-↓
-Create an alert
+ArchiGuard AI demonstrates how these activities can be combined into an automated workflow:
 
-the prototype automates these stages into a repeatable workflow:
+Architecture Proposal
+↓
+Automated Processing
+↓
+AI-Assisted Analysis
+↓
+Compliance Evaluation
+↓
+Structured Findings
+↓
+Automated Compliance Report
 
-File Change
-↓
-Automated Detection
-↓
-Automated Analysis
-↓
-Standards Review
-↓
-Structured Alert
-
-The result is a more consistent and repeatable approach to architecture-change monitoring.
+The result is a repeatable approach to architecture compliance analysis and documentation.
 
 ---
 
@@ -400,68 +542,72 @@ The result is a more consistent and repeatable approach to architecture-change m
 This project provided practical experience with:
 
 - Python application development
-- Modular software architecture
-- File-system monitoring
-- State tracking
-- Metadata extraction
-- Data processing
-- JSON-based persistence
-- HTML dashboard generation
-- Streamlit interfaces
 - Generative-AI integration
-- Prompt-based AI analysis
-- Technology standards validation
-- Workflow automation
+- Google Gemini API integration
+- API-based application workflows
+- Prompt engineering
+- Structured AI outputs
+- Compliance evaluation
+- Enterprise technology standards
+- Architecture governance concepts
+- Automated documentation
+- Markdown report generation
+- File processing
+- Error and retry handling
+- Streamlit application development
 - Git/GitHub project organization
-- Enterprise architecture concepts
 
 ---
 
 # 🎓 Learning Outcomes
 
-Through this project, I developed a stronger understanding of how software automation can be applied to enterprise technology processes.
+Through this project, I developed a stronger understanding of how artificial intelligence can be applied to enterprise technology workflows.
 
-Key learning outcomes include:
+## 1. Integrating Generative AI into Applications
 
-## 1. Designing Modular Workflows
+The project provided practical experience connecting a Python application to a generative-AI API and incorporating the resulting analysis into an automated workflow.
 
-Breaking a larger automation problem into independent processing stages makes the system easier to develop and maintain.
+## 2. Designing Structured AI Workflows
 
-## 2. Combining Deterministic Logic with AI
+Rather than treating generative AI as an isolated chatbot, the project uses AI as one component within a larger processing pipeline.
 
-The project demonstrates how rule-based processing and generative-AI analysis can operate within the same workflow.
+## 3. Applying AI to Enterprise Technology Problems
 
-## 3. Managing Application State
+The project explores how generative AI can assist with architecture review, compliance analysis, and documentation.
 
-Tracking file state is essential for distinguishing new events from previously processed information.
+## 4. Working with Technology Standards
 
-## 4. Structuring Enterprise Information
+Defining explicit standards creates a repeatable framework for evaluating architecture proposals.
 
-Converting architecture changes into structured records makes the resulting information easier to review and reuse.
+## 5. Automating Technical Documentation
 
-## 5. Building Human-Readable Interfaces
+The project demonstrates how analysis results can be automatically transformed into consistent compliance reports.
 
-The Streamlit interface demonstrates how technical automation can be presented through a more accessible workflow-oriented interface.
+## 6. Recognizing AI Limitations
+
+Including review limitations reinforces the importance of human oversight when AI is used for governance-oriented analysis.
 
 ---
 
 # 🔮 Future Enhancements
 
-The current project is a Python-based proof of concept. Future development could extend the prototype into a more enterprise-integrated workflow.
+The current implementation is a Python-based proof of concept. Future development could expand the system into a broader enterprise architecture governance workflow.
 
 Potential enhancements include:
 
-- SharePoint-based architecture repositories
+- Integration with enterprise architecture repositories
+- SharePoint-based document workflows
 - Microsoft Teams notifications
 - Microsoft Power Automate integration
 - SAP LeanIX integration
-- Enterprise identity and access controls
-- Persistent databases
-- More advanced change classification
-- Expanded architecture standards
-- Human approval workflows
-- Production-grade monitoring
-- Enterprise notification systems
+- Additional enterprise technology standards
+- Persistent compliance history
+- Role-based access controls
+- Architecture-review approval workflows
+- More advanced evidence extraction
+- Human-in-the-loop review
+- Enterprise dashboards
+- Production-grade deployment
 
 These integrations are future enhancements and are not part of the current prototype implementation.
 
@@ -469,25 +615,39 @@ These integrations are future enhancements and are not part of the current proto
 
 # 📌 Current Scope
 
-This project is a student-built proof of concept demonstrating enterprise architecture change monitoring, automation, AI-assisted analysis, and structured alert generation.
+ArchiGuard AI is a student-built proof of concept demonstrating AI-assisted enterprise architecture compliance analysis and automated documentation.
 
-It does not represent a production enterprise architecture governance platform.
+The current prototype operates on architecture proposal files and defined enterprise technology standards.
 
-The current implementation operates on local architecture files and uses simulated enterprise artifacts to demonstrate the underlying workflow concepts.
+It is intended to demonstrate the underlying technical and architectural concepts rather than function as a production enterprise governance platform.
+
+The compliance results should therefore be treated as AI-assisted analysis requiring appropriate human review.
 
 ---
 
 # 💼 Why This Project Matters
 
-Enterprise technology environments generate large amounts of architectural information that must be monitored, reviewed, and maintained.
+Enterprise architecture teams must evaluate technology proposals against security, integration, resilience, identity, and governance requirements.
 
-This project explores how automation and AI can help transform that process from a primarily manual activity into a structured workflow.
+This project explores how generative AI and automation can assist with that process.
 
 The broader concept is:
 
-Detect → Understand → Validate → Alert
+Analyze → Evaluate → Document → Review
 
-This approach connects software engineering, artificial intelligence, automation, and enterprise architecture into a single practical project.
+ArchiGuard AI connects:
+
+- Artificial intelligence
+- Python development
+- Enterprise architecture
+- Technology governance
+- Compliance analysis
+- Automation
+- Technical documentation
+
+into a single practical project.
+
+The project demonstrates how generative AI can be applied to a concrete enterprise technology problem rather than being used only for general-purpose question answering.
 
 ---
 
@@ -512,8 +672,7 @@ Interested in:
 
 This project was developed as part of my independent technical portfolio development and exploration of AI-assisted enterprise technology workflows.
 
-The project combines concepts from software development, artificial intelligence, cybersecurity, enterprise architecture, and workflow automation.
-
+The project combines concepts from software development, artificial intelligence, cybersecurity, enterprise architecture, technology governance, and workflow automation.
 
 Video Evidence:
 
