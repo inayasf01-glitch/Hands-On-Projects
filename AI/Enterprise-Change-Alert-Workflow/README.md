@@ -514,6 +514,11 @@ This project was developed as part of my independent technical portfolio develop
 
 The project combines concepts from software development, artificial intelligence, cybersecurity, enterprise architecture, and workflow automation.
 
+🔗 Project Resources
+🌐 Live Application
+
+https://inayasf01-glitch-h-aienterprise-change-alert-workflowapp-wwaqfb.streamlit.app/
+
 
 Video Evidence:
 
