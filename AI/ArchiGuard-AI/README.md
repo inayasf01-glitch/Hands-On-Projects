@@ -86,5 +86,4 @@ It is a student-built proof of concept and does not represent a production enter
 
 Video Evidence:
 
-[ArchiGuard_AI_Demo_GitHub_Final.zip](https://github.com/user-attachments/files/32147350/ArchiGuard_AI_Demo_GitHub_Final.zip)
-
+https://github.com/user-attachments/assets/5e7d0b8c-6fee-4f71-a44b-edcad4083b6a
