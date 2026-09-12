@@ -538,13 +538,9 @@ Enterprise architecture concepts
 
 Responsible AI boundaries
 
+
 Author
-
-
-
 Inaya Shahid
-
-
 
 Information Technology Student
 
